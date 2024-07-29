@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawLink - distressed pet form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/distressedPetForm.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="d-flex justify-content-between align-items-center py-3 w-100 px-3">
+            <button class="btn btn-light d-lg-none" id="menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+                <img src="images/hamburger.png" alt="Menu" class="img-fluid menu-icon">
+            </button>
+            <div class="logo d-flex align-items-center">
+                <a href="index.html">
+                    <img src="images/PawLinkNavLogo.svg" alt="PawLink Logo" class="logo-img img-fluid">
+                </a>
+                <span class="logo-text">Connecting to rescue more</span>
+            </div>
+            <ul class="nav d-none d-lg-flex gap-2 ms-auto">
+                <li class="nav-item d-flex align-items-center">
+                    <div class="nav-link-wrapper d-flex align-items-center">
+                        <img src="images/globeIcon.svg" alt="Icon 1" class="nav-icon img-fluid me-1">
+                        <a href="./index.html" class="nav-link">MAP</a>
+                    </div>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <div class="nav-link-wrapper d-flex align-items-center">
+                        <img src="images/addIcon.png" alt="Icon 2" class="nav-icon img-fluid me-1">
+                        <a href="./reportType.html" class="nav-link">ADD REPORT</a>
+                    </div>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <div class="nav-link-wrapper d-flex align-items-center" data-tooltip="Not implemented yet">
+                        <img src="images/scanIcon.png" alt="Icon 3" class="nav-icon img-fluid me-1">
+                        <a href="#" class="nav-link">SCAN CHIP</a>
+                    </div>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <div class="nav-link-wrapper d-flex align-items-center" data-tooltip="Not implemented yet">
+                        <img src="images/reportIcon.png" alt="Icon 4" class="nav-icon img-fluid me-1">
+                        <a href="#" class="nav-link">MY REPORTS</a>
+                    </div>
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <div class="nav-link-wrapper d-flex align-items-center" data-tooltip="Not implemented yet">
+                        <img src="images/messagesIcon.png" alt="Icon 5" class="nav-icon img-fluid me-1">
+                        <a href="#" class="nav-link">MESSAGES</a>
+                    </div>
+                </li>
+            </ul>
+            <a href="#" id="UserProfile"><img src="https://project-web-alon-and-yotam.onrender.com/imges/Owners/saraHadasa.jpg" alt="User Photo" class="user-img rounded-circle"></a>
+        </nav>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuHeading">
+            <h2 id="offcanvasMenuHeading" class="visually-hidden">Menu</h2>
+            <div class="offcanvas-body">
+                <div class="d-flex flex-column align-items-start">
+                    <div class="d-flex align-items-center justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center">
+                            <img src="images/BellSoundNotification.svg" alt="Mute reports icon" class="nav-icon img-fluid me-2 px-2">
+                            <span>Mute reports</span>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="muteReportsToggle" data-tooltip="Not implemented yet">
+                            <label class="form-check-label" for="muteReportsToggle"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between w-100">
+                        <div class="d-flex align-items-center">
+                            <img src="images/lightTouggle.svg" alt="Dark mode icon" class="nav-icon img-fluid me-2">
+                            <span>Dark mode</span>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="darkModeToggle" data-tooltip="Not implemented yet">
+                            <label class="form-check-label" for="darkModeToggle"></label>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-unstyled flex-grow-1">
+                    <li><a href="./index.html" class="nav-link">Map</a></li>
+                    <li><a href="./reportType.html" class="nav-link">Add report</a></li>
+                    <li><a href="#" class="nav-link" data-tooltip="Not implemented yet">Scan chip</a></li>
+                    <li><a href="#" class="nav-link" data-tooltip="Not implemented yet">My report</a></li>
+                    <li><a href="#" class="nav-link" data-tooltip="Not implemented yet">Massages</a></li>
+                </ul>
+                <ul class="list-unstyled bottom-items">
+                    <li><a href="#" class="nav-link" data-tooltip="Not implemented yet"><img src="images/settingIcon.png" alt="Settings Icon"> Settings</a></li>
+                    <li><a href="#" class="nav-link" data-tooltip="Not implemented yet"><img src="images/logOutIcon.png" alt="Logout Icon"> LogOut</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div id="pets-container" class="d-flex flex-column justify-content-center mb-4">
+        </div>
+        <section class="mt-1">
+            <h1 class="text-start">New distressed pet Report</h1>
+            <form id="distressed-pet-form" class="mb-1" action="https://project-web-alon-and-yotam.onrender.com/api/lostpetform/submit" method="POST" enctype="multipart/form-data"> <!-- new line edited -->
+                <div class="mb-2">
+                    <label for="pet-chip-number" class="form-label">Pet chip number *</label>
+                    <input type="text" class="form-control" id="pet-chip-number" name="pet_chip_number" required>
+                    <span id="pet-chip-error" class="error"></span>
+                </div>
+                <div class="mb-2">
+                    <label for="the-prob-and-pet-condition" class="form-label">The problem and condition of the pet *</label>
+                    <input type="text" class="form-control" id="the-prob-and-pet-condition" name="the_prob_and_pet_condition" required> <!-- new line edited -->
+                    <span id="the-prob-and-pet-condition-error" class="error"></span> <!-- new line added -->
+                </div>
+                <fieldset>
+                    <legend class="form-label">Distress signs *</legend>
+                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                        <div class="text-center mb-2">
+                            <img src="images/dogInjured.png" alt="Barking behavior icon" class="icon img-fluid">
+                            <label for="barking" class="d-block">Bleeding</label>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input mt-2" id="barking" name="pet_distress_signs" value="bleeding"> <!-- new line edited -->
+                            </div>
+                        </div>
+                        <div class="text-center mb-1">
+                            <img src="images/unconsciousDog.png" alt="Biting behavior icon" class="icon img-fluid">
+                            <label for="biting" class="d-block">Unconscious</label>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input mt-2" id="biting" name="pet_distress_signs" value="unconscious"> <!-- new line edited -->
+                            </div>
+                        </div>
+                        <div class="text-center mb-3">
+                            <img src="images/dogVomit.png" alt="Afraid behavior icon" class="icon img-fluid">
+                            <label for="afraid" class="d-block">Vomiting</label>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input mt-2" id="afraid" name="pet_distress_signs" value="vomiting"> <!-- new line edited -->
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-light" id="more-button" data-tooltip="Not implemented yet">More</button>
+                    </div>
+                </fieldset>
+                <div class="mb-2">
+                    <label for="distressedPetPhotos" class="form-label">Add Photos (at least 1) *</label>
+                    <input type="file" class="form-control" id="distressedPetPhotos" name="distressedPetPhotos" multiple required>
+                    <span id="distressedPetPhotosError" class="error"></span> <!-- new line edited -->
+                </div>
+                <div class="mb-2">
+                    <label for="distressedPetCity" class="form-label">City *</label>
+                    <input type="text" class="form-control" id="distressedPetCity" name="distressedPetCity" required> <!-- new line edited -->
+                    <span id="distressedPetCity-error" class="error"></span> <!-- new line edited -->
+                </div>
+                <div class="mb-3">
+                    <label for="distressedPetLastSeenAddress" class="form-label">Last Seen Address *</label>
+                    <input type="text" class="form-control" id="distressedPetLastSeenAddress" name="distressedPetLastSeenAddress" required> <!-- new line edited -->
+                    <span id="distressedPetLastSeenAddressError" class="error"></span> <!-- new line edited -->
+                </div>
+                <h6>Urgency</h6>
+                <div class="d-flex justify-content-between">
+                    <span>0 Min</span>
+                    <span>Max 10</span>
+                </div>
+                <input type="range" class="form-range" min="0" max="10" value="0" id="urgency"> <!-- new line edited -->
+                <script src="app.js"></script>
+                <div class="mb-1">
+                    <label for="distressedPetMoreInformation" class="form-label mt-3">How to help *</label>
+                    <textarea class="form-control" id="distressedPetMoreInformation" name="distressedPetMoreInformation" required></textarea> <!-- new line edited -->
+                    <span id="distressedPetMoreInformationError" class="error"></span> <!-- new line edited -->
+                </div>
+            </form>
+            <div class="d-flex justify-content-center confirmation-section">
+                <button onclick="return validateForm(event)" class="confirmation-button">
+                    <span class="confirmation-container">
+                        <img src="images/confirmCheckBox.svg" alt="Confirmation Check" class="confirmation-icon">
+                    </span>
+                </button>
+            </div>
+        </section>
+    </main>
+    <footer class="fixed-bottom d-flex justify-content-around custom-footer-bg border-top d-lg-none">
+        <button class="btn" id="homeMap"><img src="images/globeIcon.svg" alt="Global navigation icon" class="img-fluid"></button>
+        <button class="btn" id="addReport"><img src="images/plusIcon.svg" alt="Add new icon" class="img-fluid"></button>
+        <button class="btn" id="scanPet"><img src="images/signalIcon.svg" alt="Signal icon" class="img-fluid"></button>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
